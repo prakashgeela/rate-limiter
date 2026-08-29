@@ -1,0 +1,11 @@
+# Ignore compiled byte code
+*.class
+
+# Ignore IntelliJ's build output directory
+out/
+target/
+build/
+
+# Ignore IntelliJ's internal configuration (optional but recommended)
+.idea/
+*.iml
