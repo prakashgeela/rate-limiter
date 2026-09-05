@@ -55,8 +55,9 @@ Atomic retrieval and bucket initialization using computeIfAbsent.
 
 Concurrency unit tests simulating high-throughput parallel requests for distinct and identical keys.
 
+RATE-4: provide an interface so we can avoid hardcoding for the storage
 Sprint 2: Extensibility & Secondary Strategy
-RATE-4: Fixed Window Counter Implementation
+RATE-5: Fixed Window Counter Implementation
 
 Scope: Implement the alternate strategy to prove pluggability.
 
@@ -68,7 +69,7 @@ FixedWindowCounterAlgo implementing RateLimitAlgo.
 
 Comparative integration test showing seamless switching between BucketTokenAlgo and FixedWindowCounterAlgo in RateLimitClient.
 
-RATE-5: Composite Routing & Multi-Endpoint Support
+RATE-6: Composite Routing & Multi-Endpoint Support
 
 Scope: Extend key generation to support per-endpoint and per-user granularity.
 
@@ -79,7 +80,7 @@ Key formatting helper (apiName + ":" + clientId).
 Configurable per-route rate limit rule mapper in RateLimitClient.
 
 Sprint 3: Operational Hardening (Non-Functional Requirements)
-RATE-6: Inactive State Eviction & Memory Leaks Prevention
+RATE-7: Inactive State Eviction & Memory Leaks Prevention
 
 Scope: Prevent unbounded growth of in-memory maps over time.
 
