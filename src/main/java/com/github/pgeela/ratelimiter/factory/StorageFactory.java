@@ -12,7 +12,7 @@ public class StorageFactory {
 
 
     public static <T> StorageAbstraction <T> createAndGetStorage(RateLimitConfig config) {
-        String storageType = config.getValue(RATE_LIMIT_STORAGE_TYPE, DEFAULT_RATE_LIMIT_STORAGE_TYPE);
+        String storageType = config.getValue(RATE_LIMIT_STORAGE_TYPE, DEFAULT_RATE_LIMIT_STORAGE_TYPE).toUpperCase();
 
         switch (storageType) {
             case DEFAULT_RATE_LIMIT_STORAGE_TYPE:

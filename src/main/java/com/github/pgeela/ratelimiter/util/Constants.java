@@ -9,5 +9,5 @@ public class Constants {
     public static final String DEFAULT_RATE_LIMITER_TOKEN_BUCKET_CAPACITY = "100";
     public static final String DEFAULT_RATE_LIMITER_TOKEN_BUCKET_REFILL_RATE_PER_MS = "0.1";
     public static final String RATE_LIMIT_STORAGE_TYPE = "rate_limit_storage_type";
-    public static final String DEFAULT_RATE_LIMIT_STORAGE_TYPE = "IN-MEMORY";
+    public static final String DEFAULT_RATE_LIMIT_STORAGE_TYPE = "in_memory";
 }
