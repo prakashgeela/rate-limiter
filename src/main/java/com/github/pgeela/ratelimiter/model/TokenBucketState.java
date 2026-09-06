@@ -17,8 +17,8 @@ public class TokenBucketState {
     public synchronized boolean tryConsume() {
 
         refill();
-        if (tokenAvailable > 1) {
-            tokenAvailable--;
+        if (tokenAvailable > 1.0) {
+            tokenAvailable -= 1.0;
             return true;
         }
 
@@ -26,7 +26,7 @@ public class TokenBucketState {
 
     }
 
-    public void refill() {
+    private void refill() {
         long currentTime = System.currentTimeMillis();
         long elapsedTime = currentTime - lastRefillTimeStamp;
 

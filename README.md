@@ -126,4 +126,6 @@ rate-limiter/
 └── ConcurrencyTest.java         // Multi-threaded tests
 
 
+UML:
+
 https://app.diagrams.net/#Lrate-limit.drawio#%7B%22pageId%22%3A%22nKiRzjW_MFvlQvxHT8Au%22%7D

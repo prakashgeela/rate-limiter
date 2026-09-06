@@ -7,19 +7,24 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TokenBucketAlgorithm implements RateLimitAlgorithm {
 
-    private long capacity;
-    private double refillRatePerMs;
+    private final long capacity;
+    private final double refillRatePerMs;
+    private final Map<String, TokenBucketState> userToTokenMap = new ConcurrentHashMap<>();
 
     public TokenBucketAlgorithm(long capacity, double refillRatePerMs) {
+
+        if (capacity <= 0 || refillRatePerMs <= 0) {
+            throw new IllegalArgumentException("Capacity and refill rate must be positive");
+        }
+
         this.capacity = capacity;
         this.refillRatePerMs = refillRatePerMs;
     }
 
-    private Map<String, TokenBucketState> userToTokenMap = new ConcurrentHashMap<>();
     @Override
     public boolean isAllowed(String userId) {
-        TokenBucketState tokenBucketState = userToTokenMap.getOrDefault(
-                userId, new TokenBucketState(capacity, refillRatePerMs));
+        TokenBucketState tokenBucketState = userToTokenMap.computeIfAbsent(
+                userId, k -> new TokenBucketState(capacity, refillRatePerMs));
 
         return tokenBucketState.tryConsume();
     }

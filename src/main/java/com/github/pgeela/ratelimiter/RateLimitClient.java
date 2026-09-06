@@ -23,9 +23,4 @@ public class RateLimitClient {
     public boolean isAllowed(String userId) {
         return rateLimitAlgorithm.isAllowed(userId);
     }
-
-
-
-
-
 }
