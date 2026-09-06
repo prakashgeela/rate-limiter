@@ -17,7 +17,7 @@ public class TokenBucketState implements ExpirableState {
     public synchronized boolean tryConsume() {
 
         refill();
-        if (tokenAvailable > 1.0) {
+        if (tokenAvailable >= 1.0) {
             tokenAvailable -= 1.0;
             return true;
         }
@@ -38,7 +38,7 @@ public class TokenBucketState implements ExpirableState {
     }
 
     @Override
-    public boolean isExpired(long currentTime) {
+    public synchronized boolean isExpired(long currentTime) {
         long threshold = (long) Math.ceil(capacity / refillRatePerMs);
         return currentTime - lastRefillTimeStamp > threshold;
     }
