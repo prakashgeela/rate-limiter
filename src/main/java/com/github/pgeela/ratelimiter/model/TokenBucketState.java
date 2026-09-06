@@ -1,6 +1,6 @@
 package com.github.pgeela.ratelimiter.model;
 
-public class TokenBucketState {
+public class TokenBucketState implements ExpirableState {
 
     private final long capacity;
     private final double refillRatePerMs;
@@ -35,9 +35,11 @@ public class TokenBucketState {
                     capacity);
             this.lastRefillTimeStamp = currentTime;
         }
-
-
     }
 
-
+    @Override
+    public boolean isExpired(long currentTime) {
+        long threshold = (long) Math.ceil(capacity / refillRatePerMs);
+        return currentTime - lastRefillTimeStamp > threshold;
+    }
 }
