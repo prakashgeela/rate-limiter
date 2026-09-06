@@ -40,7 +40,7 @@ public class RateLimitConfig {
         properties.putAll(overrideProperties);
     }
 
-    public String getValue(String key) {
-        return properties.getProperty(key);
+    public String getValue(String key, String defaultStr) {
+        return properties.getProperty(key, defaultStr);
     }
 }
